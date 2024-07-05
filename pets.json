@@ -1,0 +1,46 @@
+{
+    "pets": [
+      {
+        "name": "Persian Cat",
+        "type": "Cat",
+        "breed": "Persian",
+        "description": "A beautiful Persian cat with a long fur coat, known for its gentle and calm demeanor. Persian cats are affectionate and enjoy a serene environment. They have a luxurious coat that requires regular grooming.",
+        "image": "images/gallery-1.jpg"
+      },
+      {
+        "name": "Pomeranian",
+        "type": "Dog",
+        "breed": "Pomeranian",
+        "description": "A small and fluffy Pomeranian dog, full of energy and curiosity. Pomeranians are known for their lively personality and bright, alert expressions. They are very loyal and can be excellent watchdogs despite their small size.",
+        "image": "images/gallery-2.jpg"
+      },
+      {
+        "name": "Sphynx Cat",
+        "type": "Cat",
+        "breed": "Sphynx",
+        "description": "A hairless Sphynx cat with wrinkled skin, known for its affectionate and playful nature. Sphynx cats are sociable and love attention. They require regular bathing due to their lack of fur and are known for their high intelligence.",
+        "image": "images/gallery-3.jpg"
+      },
+      {
+        "name": "British Shorthair",
+        "type": "Cat",
+        "breed": "British Shorthair",
+        "description": "A British Shorthair cat with a round face, famous for its dense, plush coat and friendly, easygoing temperament. British Shorthairs are independent but enjoy companionship. They are robust and healthy cats, making them a popular choice for families.",
+        "image": "images/gallery-4.jpg"
+      },
+      {
+        "name": "Beagle",
+        "type": "Dog",
+        "breed": "Beagle",
+        "description": "A friendly Beagle dog with long ears, known for its keen sense of smell and tracking abilities. Beagles are sociable, great with children, and have a playful nature. They require regular exercise and love exploring the outdoors.",
+        "image": "images/gallery-5.jpg"
+      },
+      {
+        "name": "Pug",
+        "type": "Dog",
+        "breed": "Pug",
+        "description": "A cute Pug with a wrinkled face, known for its charming and loving personality. Pugs are adaptable, making them great pets for both families and individuals. They are known for their distinctive appearance and playful antics.",
+        "image": "images/gallery-6.jpg"
+      }
+    ]
+  }

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PetHavenCare</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="manifest" href="/manifest.json">
+    <script src="js/service-worker.js"></script>
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="images/site.webmanifest">
+<link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+  </head>
+  <body>
+
+		<div class="wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 d-flex align-items-center">
+						<p class="mb-0 phone pl-md-2">
+							<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +94773525245</a> 
+							<a href="#"><span class="fa fa-paper-plane mr-1"></span> pethavencare@gmail.com</a>
+						</p>
+					</div>
+					<div class="col-md-6 d-flex justify-content-md-end">
+						<div class="social-media">
+							<p class="mb-0 d-flex">
+								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+								<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+			<div class="container">
+				<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>PetHavenCare</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="fa fa-bars"></span> Menu
+			  </button>
+			  <div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="vet.html" class="nav-link">Veterinarian</a></li>
+					<li class="nav-item"><a href="pricing.html" class="nav-link">Product</a></li>
+					<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+				  <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+				  <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+				  <li class="nav-item dropdown" id="userMenu" style="display: none;">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  <span id="userEmail"></span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a href="#" id="logoutLink" class="dropdown-item">Logout</a>
+					</div>
+				  </li>
+				  <li id="loginRegisterLink" class="nav-item"><a href="register.html" class="nav-link">Login/Register</a></li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		<!-- END nav -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "your-api-key",
+        authDomain: "your-auth-domain",
+        projectId: "your-project-id",
+        storageBucket: "your-storage-bucket",
+        messagingSenderId: "your-messaging-sender-id",
+        appId: "your-app-id"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var db = firebase.firestore();
+    </script>
+    <style>
+        .cart-view {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 350px;
+        }
+        .cart-view h4 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .cart-item span {
+            font-size: 16px;
+            color: #555;
+        }
+        .cart-total {
+            font-size: 16px;
+            color: #555;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+            text-align: right;
+        }
+        .cart-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .cart-buttons a {
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            width: 48%;
+        }
+        .btn-checkout {
+            background: #f96d00;
+        }
+        .btn-checkout:hover {
+            background: #e85b00;
+        }
+        .btn-clear {
+            background: #d9534f;
+        }
+        .btn-clear:hover {
+            background: #c9302c;
+        }
+        .close-cart {
+            display: block;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .close-cart a {
+            color: #333;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end">
+                <div class="col-md-9 ftco-animate pb-5">
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Pricing <i class="ion-ios-arrow-forward"></i></span></p>
+                    <h1 class="mb-0 bread">Pricing</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-products">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="header">
+                        <h3>Featured Product</h3>
+                        <h2>Popular Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="product-wrapper">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-1" class="single-product" data-title="Pedigree Chicken & Vegetables 3Kg - Adult Dog" data-old-price="7800.00" data-price="6500.00" data-image="images/product.jpg">
+                            <div class="part-1">
+                                <img src="images/product.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Pedigree Chicken & Vegetables 3Kg - Adult Dog</h3>
+                                <h4 class="product-old-price">LKR 7800.00</h4>
+                                <h4 class="product-price">LKR 6500.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more product items as needed -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-2" class="single-product" data-title="Royal Canin Maxi Puppy - 45LB" data-price="4500.00" data-image="images/product2.jpg">
+                            <div class="part-1">
+                                <img src="images/product2.jpg" alt="Product Image" class="product-image">
+                                <span class="discount">15% off</span>
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Royal Canin Maxi Puppy - 45LB</h3>
+                                <h4 class="product-price">LKR 4500.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-3" class="single-product" data-title="Litty Kitter Cat Litter 8Kg" data-old-price="1400.00" data-price="1250.00" data-image="images/product3.jpg">
+                            <div class="part-1">
+                                <img src="images/product3.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Litty Kitter Cat Litter 8Kg</h3>
+                                <h4 class="product-old-price">LKR 1400.00</h4>
+                                <h4 class="product-price">LKR 1250.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-4" class="single-product" data-title="Frontline Spray Flea & Tick Treatment 250ml" data-price="2500.00" data-image="images/product4.jpg">
+                            <div class="part-1">
+                                <img src="images/product4.jpg" alt="Product Image" class="product-image">
+                                <span class="new">new</span>
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Frontline Spray Flea & Tick Treatment 250ml</h3>
+                                <h4 class="product-price">LKR 2500.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-5" class="single-product" data-title="12.5 oz Adult Sensitive Stomach and Skin Dog Food" data-old-price="2850.00" data-price="2500.00" data-image="images/product5.jpg">
+                            <div class="part-1">
+                                <img src="images/product5.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">12.5 oz Adult Sensitive Stomach and Skin Dog Food</h3>
+                                <h4 class="product-old-price">LKR 2850.00</h4>
+                                <h4 class="product-price">LKR 2500.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-6" class="single-product" data-title="Beaphar Salmon Oil - 425ml" data-price="5500.00" data-image="images/product6.jpg">
+                            <div class="part-1">
+                                <img src="images/product6.jpg" alt="Product Image" class="product-image">
+                                <span class="discount">15% off</span>
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Beaphar Salmon Oil - 425ml</h3>
+                                <h4 class="product-price">LKR 5500.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-7" class="single-product" data-title="Blackhawk Adult - Lamb and Rice 20kg" data-price="10500.00" data-image="images/product7.jpg">
+                            <div class="part-1">
+                                <img src="images/product7.jpg" alt="Product Image" class="product-image">
+                                <span class="new">new</span>
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Blackhawk Adult - Lamb and Rice 20kg</h3>
+                                <h4 class="product-price">LKR 10500.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-8" class="single-product" data-title="Beaphar Bone Builder - 500G" data-old-price="4500.00" data-price="4000.00" data-image="images/product8.jpg">
+                            <div class="part-1">
+                                <img src="images/product8.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Beaphar Bone Builder - 500G</h3>
+                                <h4 class="product-old-price">LKR 4500.00</h4>
+                                <h4 class="product-price">LKR 4000.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-9" class="single-product" data-title="Beaphar Mutton Fat - 425ml" data-old-price="5500.00" data-price="4000.00" data-image="images/product9.jpg">
+                            <div class="part-1">
+                                <img src="images/product9.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Beaphar Mutton Fat - 425ml</h3>
+                                <h4 class="product-old-price">LKR 5500.00</h4>
+                                <h4 class="product-price">LKR 4000.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-10" class="single-product" data-title="Beaphar Salmon Oil Paste - Dog - 100G" data-old-price="3500.00" data-price="2800.00" data-image="images/product10.jpg">
+                            <div class="part-1">
+                                <img src="images/product10.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Beaphar Salmon Oil Paste - Dog - 100G</h3>
+                                <h4 class="product-old-price">LKR 3500.00</h4>
+                                <h4 class="product-price">LKR 2800.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-11" class="single-product" data-title="Beaphar Calcium Tablets - 180 Tablets - 108g" data-old-price="18500.00" data-price="15000.00" data-image="images/product11.jpg">
+                            <div class="part-1">
+                                <img src="images/product11.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Beaphar Calcium Tablets - 180 Tablets - 108g</h3>
+                                <h4 class="product-old-price">LKR 18500.00</h4>
+                                <h4 class="product-price">LKR 15000.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div id="product-12" class="single-product" data-title="Beaphar Brewers Yeast - 100Tab" data-old-price="2050.00" data-price="1750.00" data-image="images/product12.jpg">
+                            <div class="part-1">
+                                <img src="images/product12.jpg" alt="Product Image" class="product-image">
+                                <ul>
+                                    <li><a href="#" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="part-2">
+                                <h3 class="product-title">Beaphar Brewers Yeast - 100Tab</h3>
+                                <h4 class="product-old-price">LKR 2050.00</h4>
+                                <h4 class="product-price">LKR 1750.00</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer class="footer">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 mx-auto">
+              <h2 class="footer-heading">PetHavenCare</h2>
+              <p>We provide top-notch care and services to ensure your pets are happy, healthy, and well-taken care of.</p>
+              <ul class="ftco-footer-social p-0 d-flex justify-content-center">
+                <li class="ftco-animate mx-2"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+                <li class="ftco-animate mx-2"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+                <li class="ftco-animate mx-2"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 mx-auto">
+              <h2 class="footer-heading">Quick Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="about.html" class="py-2 d-block">About</a></li>
+                <li><a href="services.html" class="py-2 d-block">Services</a></li>
+                <li><a href="pricing.html" class="py-2 d-block">Pricing</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-5 mb-md-0 mx-auto">
+              <h2 class="footer-heading">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul class="list-unstyled">
+                  <li class="d-flex align-items-center mb-2">
+                    <span class="icon fa fa-map mr-2"></span>
+                    <span class="text">216, Mahara, Gampola</span>
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <span class="icon fa fa-phone mr-2"></span>
+                    
+                    <a href="tel:+94773525245" class="text">+94773525245</a>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <span class="icon fa fa-paper-plane mr-2"></span>
+                    <a href="mailto:pethavencare@gmail.com" class="text">pethavencare@gmail.com</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-md-12 text-center">
+             
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <div class="cart-view" id="cart-view">
+        <div class="close-cart"><a href="#" id="close-cart">&times;</a></div>
+        <h4>Items in Cart</h4>
+        <div id="cart-items"></div>
+        <div class="cart-total">Total: LKR <span id="total-price">0.00</span></div>
+        <div class="cart-buttons">
+            <a href="#" class="btn-checkout">Checkout</a>
+            <a href="#" class="btn-clear" id="clear-cart">Clear Cart</a>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartView = document.getElementById('cart-view');
+            const cartItems = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            const closeCart = document.getElementById('close-cart');
+            const clearCart = document.getElementById('clear-cart');
+            let totalPrice = 0;
+
+            function addToCart(title, price, image) {
+                const div = document.createElement('div');
+                div.classList.add('cart-item');
+                div.innerHTML = `<div class="cart-item-info"><img src="${image}" alt="${title}"><span>${title} - LKR ${price}</span></div>`;
+                cartItems.appendChild(div);
+                totalPrice += parseFloat(price);
+                updateTotalPrice();
+                cartView.style.display = 'block';
+            }
+
+            function updateTotalPrice() {
+                totalPriceElement.textContent = totalPrice.toFixed(2);
+            }
+
+            function clearCartItems() {
+                cartItems.innerHTML = '';
+                totalPrice = 0;
+                updateTotalPrice();
+            }
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const product = this.closest('.single-product');
+                    const title = product.getAttribute('data-title');
+                    const price = product.getAttribute('data-price');
+                    const image = product.getAttribute('data-image');
+                    addToCart(title, price, image);
+                });
+            });
+
+            closeCart.addEventListener('click', function (event) {
+                event.preventDefault();
+                cartView.style.display = 'none';
+            });
+
+            clearCart.addEventListener('click', function (event) {
+                event.preventDefault();
+                clearCartItems();
+            });
+        });
+    </script>
+</body>
+</html>
